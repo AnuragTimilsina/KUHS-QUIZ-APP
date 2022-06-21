@@ -1,5 +1,5 @@
-# Django Quiz App
- This is a simple quiz app using Django framework and Javascript
+# KUHS Quiz App
+ QUIZ application made for KUHS. 
 
 ## Features
 
@@ -50,9 +50,6 @@ Verify the deployment by navigating to your server address in your preferred bro
 127.0.0.1:8000
 ```
 
-## License
-
-MIT
 
 
   
