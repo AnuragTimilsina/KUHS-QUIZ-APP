@@ -1,0 +1,73 @@
+body {
+  overflow: hidden;
+  background-color: #e8e8e8;
+}
+
+.time-container {
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-align: right;
+  border: 0px none;
+}
+
+.time-title {
+  margin-right: 5rem;
+}
+
+.check-btn {
+  margin-top: 10px;
+}
+
+.pagination-btns {
+  margin-top: 20px;
+}
+
+.lower-radio {
+  margin-bottom: 10px;
+}
+
+.welcome {
+  margin-top: 30px;
+}
+
+.quizresults {
+  margin: auto;
+  margin-top: 150px;
+  width: 50%;
+  padding: 10px;
+}
+
+#section1 {
+  height: 100vh;
+}
+
+#section2 {
+  height: 100vh;
+}
+
+.show-result-btn {
+  float: right;
+}
+
+#index-section1 {
+  height: 100vh;
+}
+
+#index-section2 {
+  height: 100vh;
+}
+
+.categoryButton {
+  margin-top: 100px;
+  margin-left: 40%;
+  width: 20%;
+}
+
+.indexStartButton {
+  margin-left: 40%;
+  width: 20%;
+}
+
+.instructions {
+  margin: 0;
+  padding: 0;
+}

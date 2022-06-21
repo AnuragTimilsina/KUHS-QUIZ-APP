@@ -1,0 +1,74 @@
+{% extends 'base_auth.html' %} 
+{% load static %}
+{% block content %}
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="card mt-5">
+      
+
+      <div class="card-body">
+      <div class="card-title py-3">
+        <h4>Create an account to take Quiz</h4>
+      </div>  
+        
+        <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {% include 'messages.html' %}
+          <div class="form-group">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              id="usernameField"
+              value="{{fieldValues.username}}"
+              class="form-control form-contol-sm"
+            />
+          </div>
+          <div class="invalid_feedback invalid-feedback" style="display:none">
+          </div>
+          <p class="text-sm text-success usernameSuccessOutput"></p>
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              id="emailField"
+              value="{{fieldValues.email}}"
+              class="form-control form-contol-sm"
+            />
+          </div>
+          <div class="emailFeedbackArea" style="display:none">
+          </div>
+          <p class="text-sm text-success emailSuccessOutput"></p>
+          <div class="form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              id="passwordField"
+              class="form-control form-contol-sm"
+            />
+            <small class="float-right py-3 showPasswordToggle">SHOW</small>
+            <div class="login-url">
+            <span>Already have an account? </span><a href="{% url 'login' %}">Login Here</a>
+            </div>
+          </div>
+          <input type="submit" value="Register" class="btn btn-block btn-primary submit-btn">
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    <br><br><br><br><br>
+<hr style="height:1px;color:gray;background-color:gray;">
+<footer class="mr-lg-5 mt-3" style="float:right;">
+  <p>Submitted By : Arjun Mohan V P</p>
+  <p>GitHub : <a href="https://github.com/vparjunmohan/Django-Quiz-App" target=_blank>github.com/vparjunmohan/Django-Quiz-App</a></p>
+</footer>
+  <div class="col-md-4"></div>
+</div>
+
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock content %}

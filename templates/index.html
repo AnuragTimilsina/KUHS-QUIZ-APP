@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="container mt-5">
+{% include 'messages.html' %}
+</div>
+
+<div id="index-section1">
+
+    <input type="button" class="btn btn-success indexStartButton" id="start-btn" value="Start">
+    <br>
+    <a href="#index-section2" class="btn btn-info categoryButton" id="">Choose Category</a>
+
+    <div class="row">
+    
+    <!--Grid column-->
+    <div class="col-md-11 mb-4 mt-5 ml-lg-5">
+        <p class="instructions"><b>Please read the instructions :</b></p>
+        <ul class="list-group">
+            <li class="list-group-item">
+              <div class="md-v-line"></div><i class="fas fa-laptop mr-5"></i>I. Click on "Start" button to start the timer.
+            </li>
+            <li class="list-group-item">
+              <div class="md-v-line"></div><i class="fas fa-bomb mr-5"></i>II. Click "Choose Category" button to select a category, the quiz will start automatically after you have selected your quiz category.
+            </li>
+            <li class="list-group-item">
+              <div class="md-v-line"></div><i class="fas fa-code mr-5"></i>III. All the questions are compulsory. Select your answer before clicking "Check" button
+            </li>
+            <li class="list-group-item">
+              <div class="md-v-line"></div><i class="far fa-gem mr-5"></i>IV. Click "Finish" button once done to stop the timer and select "Show Results" button to view your result.
+            </li>
+          </ul>
+    
+    </div>
+</div>
+
+
+<div id="index-section2">
+
+<div class="container mt-5 pt-5">
+  <h4 class="text-center mt-lg-5">Select a category</h4>
+  <div class="row mt-lg-5">
+    {% for category in categories %}
+    <div class="col">
+      <a href="{{category.id}}" class="btn btn-primary" 
+        >{{category.category}}</a>
+
+      <br />
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<hr style="height:1px;border-width:0;color:gray;background-color:gray; ">
+<footer class="mr-lg-5 mt-3" style="float:right;">
+  <p>Submitted By: Anurag Timilsina</p>
+</footer>
+</div>
+
+{% endblock content %}
