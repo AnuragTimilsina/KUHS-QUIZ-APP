@@ -12,6 +12,7 @@ class Category(models.Model):
 
 class Question(models.Model):
     choice = models.ForeignKey(Category, on_delete=models.CASCADE)
+    quiz_image = models.ImageField(upload_to ='quiz_image/', blank=True)
     question = models.CharField(max_length=250)
     answer = models.CharField(max_length=100)
     option_one = models.CharField(max_length=100, blank=True)

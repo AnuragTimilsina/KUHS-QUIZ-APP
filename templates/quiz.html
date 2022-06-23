@@ -11,6 +11,12 @@
 
 
   <p>Q. {{question.question}}</p>
+
+  {% comment %} {% if question.quiz_image is not none%}
+    <img src="{{question.quiz_image}}" alt="Visual round Image">
+  {% endif %} {% endcomment %}
+  
+
   <div class="form-check">
   <input class="form-check-input" type="radio" name="option" id="option_one" value="{{question.option_one}}">
     {{question.option_one}}
