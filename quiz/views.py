@@ -42,5 +42,5 @@ def take_quiz(request, pk):
             messages.success(request, 'Correct answer')
             return HttpResponseRedirect(request.session['previous_page'])
         else:
-            messages.warning(request, f'Correct Answer is {correct_answer}')
+            messages.warning(request, f'Answer is {correct_answer}')
             return HttpResponseRedirect(request.session['previous_page'])
