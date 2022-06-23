@@ -1,119 +1,117 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load static %}
-{% block content %} 
+{% block content %}
 
 <div id="section1">
 
-<div class="container mt-5 pt-5">
-{% for question in page_obj %}
-<form action="" method="post">
-{% csrf_token %}
+  <div class="container mt-5 pt-5">
+    {% for question in page_obj %}
+    <form action="{% url 'take_quiz' pk=pk %}" method="post">
+      {% csrf_token %}
 
 
-  <p>Q. {{question.question}}</p>
-  <div class="form-check">
-  <input class="form-check-input" type="radio" name="option" id="option_one" value="{{question.option_one}}">
-    {{question.option_one}}
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="option" id="option_two" value="{{question.option_two}}">
-    {{question.option_two}}
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="option" id="option_three" value="{{question.option_three}}">
-    {{question.option_three}}
-  </label>
-</div>
-<div class="form-check lower-radio">
-  <input class="form-check-input" type="radio" name="option" id="option_four" value="{{question.option_four}}">
-    {{question.option_four}}
-  </label>
-</div>
-  <input type="hidden" name="answerLabel" id="answerLabel" value="{{question.answer}}">
-  <div>{% include 'messages.html' %}</div>
-  <input class="btn btn-primary check-btn" type="submit" value="Check" id="check" onclick="displayRadioValue();"/>
-</form>
-</div>
-  <div class="container" id = "result_div">
-  
+      <p>Q. {{question.question}}</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="option" id="option_one" value="{{question.option_one}}">
+        {{question.option_one}}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="option" id="option_two" value="{{question.option_two}}">
+        {{question.option_two}}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="option" id="option_three" value="{{question.option_three}}">
+        {{question.option_three}}
+        </label>
+      </div>
+      <div class="form-check lower-radio">
+        <input class="form-check-input" type="radio" name="option" id="option_four" value="{{question.option_four}}">
+        {{question.option_four}}
+        </label>
+      </div>
+      <input type="hidden" name="answerLabel" id="answerLabel" value="{{question.answer}}">
+      <div>{% include 'messages.html' %}</div>
+      <input class="btn btn-primary check-btn" type="submit" value="Check" id="check" onclick="displayRadioValue" />
+    </form>
   </div>
-{% endfor %}
+  <div class="container" id="result_div">
 
-<div class="container">
-  <div class="pagination-btns">
-    <ol class="pagination align-right mr-auto">
-    {% if page_obj.has_next %}
-      <li class="page-item">
-        <a id="next-btn" class="page-link btn btn-success" href="?page={{ page_obj.next_page_number }}" id="next-button" >Next</a>
-      </li>
-      {% endif %}
+  </div>
+  {% endfor %}
+
+  <div class="container">
+    <div class="pagination-btns">
+      <ol class="pagination align-right mr-auto">
+        {% if page_obj.has_next %}
+        <li class="page-item">
+          <a id="next-btn" class="page-link btn btn-success" href="?page={{ page_obj.next_page_number }}"
+            id="next-button">Next</a>
+        </li>
+        {% endif %}
         <li class="page-item">
           <input type="button" class="btn btn-danger" id="finish-btn" value="Finish">
         </li>
-          <a href="#section2" class="btn btn-success show-result-btn ml-auto" id="show-result-btn">Show Results</a>
-          {% comment %} <input type="button" name="" id="dummy" value="dummy button"> {% endcomment %}
-    </ol>
-Question {{page_obj.number}} of {{page_obj.paginator.num_pages}}
-{% comment %} <input type="text" id="totalScore"> {% endcomment %}
-</div>
-</div>
-    <br><br>
-<hr style="height:1px;color:gray;background-color:gray;">
-<footer class="mr-lg-5 mt-3" style="float:right;">
-  <p>Submitted By : Anurag Timilsina</p>
-</footer>
+        <a href="#section2" class="btn btn-success show-result-btn ml-auto" id="show-result-btn">Show Results</a>
+        {% comment %} <input type="button" name="" id="dummy" value="dummy button"> {% endcomment %}
+      </ol>
+      Question {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+      {% comment %} <input type="text" id="totalScore"> {% endcomment %}
+    </div>
+  </div>
+  <br><br>
+  <hr style="height:1px;color:gray;background-color:gray;">
+  <footer class="mr-lg-5 mt-3" style="float:right;">
+    <p>Submitted By : Anurag Timilsina</p>
+  </footer>
 </div>
 
 
-<div  id="section2">
-<div class="card text-white bg-secondary mb-3 quizresults">
-    <div class="card-header"><h3>Results</h3></div>
+<div id="section2">
+  <div class="card text-white bg-secondary mb-3 quizresults">
+    <div class="card-header">
+      <h3>Results</h3>
+    </div>
     <div class="card-body">
-    <div class="container">
-    <div class="row">
-      <h6 class="card-title col-3">Quiz Category</h6>
-      {% for question in page_obj %}
-      <h6 class="card-title col-8">{{question.choice}} </h6>
-      {% endfor %}
-    </div>
-    </div>
-    <hr>
-      
+      <div class="container">
+        <div class="row">
+          <h6 class="card-title col-3">Quiz Category</h6>
+          {% for question in page_obj %}
+          <h6 class="card-title col-8">{{question.choice}} </h6>
+          {% endfor %}
+        </div>
+      </div>
+      <hr>
+
       <div class="container mt-lg-5">
-      {% comment %} <div class="row">
-        <div class="col-3">Total Score</div>
-        <div class="col-8">#Total score</div>
-      </div>
-      <hr> {% endcomment %}
-      <div class="row">
-        <div class="col-3">Start Time</div>
-        <div class="col-8" id="displayStartTime">
-        <input type="text" size="58" id="startTimeField" readonly="true">
+        {% comment %} <div class="row">
+          <div class="col-3">Total Score</div>
+          <div class="col-8">#Total score</div>
         </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-3">End Time</div>
-        <div class="col-8" id="displayEndTime">
-        <input type="text" size="58" id="endTimeField" readonly="true">
+        <hr> {% endcomment %}
+        <div class="row">
+          <div class="col-3">Start Time</div>
+          <div class="col-8" id="displayStartTime">
+            <input type="text" size="58" id="startTimeField" readonly="true">
+          </div>
         </div>
-      </div>
-      <hr>
+        <hr>
+        <div class="row">
+          <div class="col-3">End Time</div>
+          <div class="col-8" id="displayEndTime">
+            <input type="text" size="58" id="endTimeField" readonly="true">
+          </div>
+        </div>
+        <hr>
       </div>
       </p>
     </div>
   </div>
-      <br><br><br><br><br><br>
-<hr style="height:1px;color:gray;background-color:gray;">
-<footer class="mr-lg-5 mt-3" style="float:right;">
-  <p>Submitted By : Anurag Timilsina</p>
-</footer>
+  <br><br><br><br><br><br>
+  <hr style="height:1px;color:gray;background-color:gray;">
+  <footer class="mr-lg-5 mt-3" style="float:right;">
+    <p>Submitted By : Anurag Timilsina</p>
+  </footer>
 </div>
 {% endblock content %}
-
-
-
-
-
