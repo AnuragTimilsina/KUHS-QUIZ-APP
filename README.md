@@ -6,6 +6,8 @@
 - Authentication
 - Choose quiz category
 - Shows quiz time taken
+- Admin dashboard
+- Can set questions and categories dynamically from dashboards
 
 ## Installation
 
